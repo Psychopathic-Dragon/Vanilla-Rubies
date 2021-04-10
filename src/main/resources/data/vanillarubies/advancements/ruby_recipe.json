@@ -1,0 +1,21 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "vanillarubies:ruby",
+      "vanillarubies:ruby_block"
+    ]
+  },
+  "criteria": {
+    "got_ruby": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "vanillarubies:ruby"
+          }
+        ]
+      }
+    }
+  }
+}

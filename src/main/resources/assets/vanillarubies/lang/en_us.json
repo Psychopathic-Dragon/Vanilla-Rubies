@@ -1,0 +1,18 @@
+{
+  "item.vanillarubies.ruby": "Ruby",
+  "block.vanillarubies.ruby_block": "Block of Ruby",
+  "itemGroup.vanillarubies.general": "Ruby Mod",
+  "block.vanillarubies.ruby_ore": "Ruby Ore",
+  "item.vanillarubies.music_disc_no_pressure": "Music Disc",
+  "item.vanillarubies.music_disc_no_pressure.desc": "C418 - no pressure",
+  "merchant.level.1": "Novice",
+  "merchant.level.2": "Initiate",
+  "merchant.level.3": "Apprentice",
+  "merchant.level.4": "Journeyman",
+  "merchant.level.5": "Expert",
+  "merchant.level.6": "Master",
+  "vanillarubies.advancements.ruby.title":"work",
+  "vanillarubies.advancements.ruby.description": "work",
+  "filled_map.jungle_pyramid": "Jungle Temple Map",
+  "filled_map.desert_pyramid": "Desert Temple Map"
+}

@@ -1,0 +1,10 @@
+{
+  "music_disc.no_pressure": {
+    "sounds": [
+      {
+        "name": "vanillarubies:records/no_pressure",
+        "stream": true
+      }
+    ]
+  }
+}
