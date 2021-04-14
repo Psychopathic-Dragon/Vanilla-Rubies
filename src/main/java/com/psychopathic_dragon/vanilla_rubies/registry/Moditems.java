@@ -14,14 +14,16 @@ public class Moditems {
     public static final Item MUSIC_DISC_NO_PRESSURE = new RubyMusicDiscItem(14, Sounds.SOUND_NO_PRESSURE,new Item.Settings().rarity(Rarity.RARE).maxCount(1).group(ItemGroup.MISC));
 
 
-    public static final BlockItem RUBY_BLOCK = new BlockItem( Modblocks.RUBY_BLOCK, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS));
+    public static final BlockItem RUBY_BLOCK = new BlockItem(Modblocks.RUBY_BLOCK, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS));
     public static final BlockItem RUBY_ORE = new BlockItem(Modblocks.RUBY_ORE, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS));
+
 
     public static void registerItems() {
         Registry.register(Registry.ITEM, new Identifier(VanillaRubies.Mod_ID, "ruby"), RUBY);
         Registry.register(Registry.ITEM, new Identifier( VanillaRubies.Mod_ID, "ruby_block"), RUBY_BLOCK);
         Registry.register(Registry.ITEM, new Identifier( VanillaRubies.Mod_ID, "ruby_ore"), RUBY_ORE);
         Registry.register(Registry.ITEM, new Identifier( VanillaRubies.Mod_ID, "music_disc_no_pressure"), MUSIC_DISC_NO_PRESSURE);
+
 
     }
 }

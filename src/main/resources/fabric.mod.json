@@ -4,16 +4,16 @@
   "version": "${version}",
 
   "name": "Vanilla Rubies",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "description": "Adds new ruby item, ruby ore, ruby block, and new villager level with ruby trades.",
   "authors": [
-    "Me!"
+    ""
   ],
   "contact": {
     "homepage": "",
     "sources": ""
   },
 
-  "license": "CC0-1.0",
+  "license": "MIT",
   "icon": "assets/vanillarubies/icon.png",
 
   "environment": "*",
