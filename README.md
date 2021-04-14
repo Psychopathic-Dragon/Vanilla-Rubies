@@ -1,9 +1,8 @@
-# Fabric Example Mod
+# Vanilla Rubies (Rubies and Trades)
+Curseforge would not let me call the mod vanilla rubies. But I like the name vanilla rubies more than rubies and trades,
+so it will  still be called vanilla rubies here and in the code of the mod.
 
-## Setup
+Adds new ruby item, ruby ore, ruby block, and new villager level with ruby trades.
 
-For setup instructions please see the [fabric wiki page](https://fabricmc.net/wiki/tutorial:setup) that relates to the IDE that you are using.
 
-## License
 
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
