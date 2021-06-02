@@ -228,7 +228,7 @@ public class VillagerTrades {
         TradeOfferHelper.registerVillagerOffers(VillagerProfession.LIBRARIAN, 6, factories -> {
             factories.add((entity, random) -> new TradeOffer(new ItemStack(Items.EMERALD, 5), new ItemStack(Moditems.RUBY, 1), 12, 45, .05f));
             factories.add(new RubyEnchantBookFactory(25));
-            factories.add(new RubyEnchantBookFactory(25));
+
         });
         
         
