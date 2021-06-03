@@ -10,7 +10,7 @@
     "VillagerDataMixin",
     "MerchantScreenMixin",
     "BeaconScreenMixin",
-    //"TradeOfferInternalsMixin"
+
 
   ],
   "client": [

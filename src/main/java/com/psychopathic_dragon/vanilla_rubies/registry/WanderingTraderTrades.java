@@ -31,7 +31,6 @@ public class WanderingTraderTrades {
         });
 
         TradeOfferHelper.registerWanderingTraderOffers(5, factories -> {
-            factories.add((entity, random) -> new TradeOffer(new ItemStack(Moditems.RUBY,5), new ItemStack(Items.MUSIC_DISC_11, 1), 1, 2,.05f));
             factories.add((entity, random) -> new TradeOffer(new ItemStack(Moditems.RUBY,5), new ItemStack(Items.MUSIC_DISC_13, 1), 1, 2,.05f));
             factories.add((entity, random) -> new TradeOffer(new ItemStack(Moditems.RUBY,5), new ItemStack(Items.MUSIC_DISC_BLOCKS, 1), 1, 2,.05f));
             factories.add((entity, random) -> new TradeOffer(new ItemStack(Moditems.RUBY,5), new ItemStack(Items.MUSIC_DISC_CAT, 1), 1, 2,.05f));
