@@ -1,6 +1,8 @@
 package com.psychopathic_dragon.vanilla_rubies.mixin;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.screen.ingame.BeaconScreen;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.util.math.MatrixStack;
@@ -19,7 +21,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import com.psychopathic_dragon.vanilla_rubies.registry.Moditems;
 
-
+@Environment(EnvType.CLIENT)
 @Mixin(BeaconScreen.class)
 public class BeaconScreenMixin extends HandledScreen<BeaconScreenHandler> {
     private static final Identifier TEXTURE = new Identifier("textures/gui/container/beacon.png");

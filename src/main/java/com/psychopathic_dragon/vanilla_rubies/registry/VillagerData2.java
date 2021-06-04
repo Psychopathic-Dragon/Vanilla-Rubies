@@ -8,8 +8,6 @@ public class VillagerData2 {
     public static void setExperience () {
         
 
-
-        // Set the new villager trade map
         VillagerDataAccessor.setBaseExperience(experience);
     }
 

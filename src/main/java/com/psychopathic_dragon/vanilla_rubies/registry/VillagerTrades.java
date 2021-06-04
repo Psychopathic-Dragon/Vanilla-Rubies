@@ -1,14 +1,10 @@
 package com.psychopathic_dragon.vanilla_rubies.registry;
 
 import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentLevelEntry;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.effect.StatusEffect;
-import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
 import net.minecraft.item.map.MapIcon;
 import net.minecraft.item.map.MapState;
@@ -17,17 +13,15 @@ import net.minecraft.potion.PotionUtil;
 import net.minecraft.recipe.BrewingRecipeRegistry;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.TranslatableText;
-import net.minecraft.util.DyeColor;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.village.*;
+import net.minecraft.world.gen.feature.FeatureConfig;
 import net.minecraft.world.gen.feature.StructureFeature;
 import org.jetbrains.annotations.Nullable;
-import com.google.common.collect.Lists;
+
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 import java.util.Random;
 import java.util.stream.Collectors;
 import net.minecraft.item.EnchantedBookItem;
@@ -38,20 +32,16 @@ public class VillagerTrades {
     public static void init() {
 
 
-
         TradeOfferHelper.registerVillagerOffers(VillagerProfession.FARMER, 6, factories -> {
             factories.add((entity, random) -> new TradeOffer(new ItemStack(Moditems.RUBY, 2), new ItemStack(Items.GOLDEN_APPLE, 1), 12, 45, .05f));
             factories.add((entity, random) -> new TradeOffer(new ItemStack(Moditems.RUBY, 1), new ItemStack(Items.PUMPKIN_PIE, 3), 12, 45, .05f));
         });
 
 
-
         TradeOfferHelper.registerVillagerOffers(VillagerProfession.FISHERMAN, 6, factories -> {
             factories.add((entity, random) -> new TradeOffer(new ItemStack(Moditems.RUBY, 1), new ItemStack(Items.TROPICAL_FISH_BUCKET, 1), 12, 45, .05f));
             factories.add((entity, random) -> new TradeOffer(new ItemStack(Moditems.RUBY, 1), new ItemStack(Items.PUFFERFISH_BUCKET, 1), 12, 45, .05f));
         });
-
-
 
 
         TradeOfferHelper.registerVillagerOffers(VillagerProfession.MASON, 6, (factories) -> {
@@ -62,12 +52,9 @@ public class VillagerTrades {
         });
 
 
-
-
         TradeOfferHelper.registerVillagerOffers(VillagerProfession.LEATHERWORKER, 6, factories -> {
             factories.add((entity, random) -> new TradeOffer(new ItemStack(Moditems.RUBY, 5), new ItemStack(Items.TURTLE_HELMET, 1), 12, 45, .05f));
         });
-
 
 
         TradeOfferHelper.registerVillagerOffers(VillagerProfession.LIBRARIAN, 6, factories -> {
@@ -77,19 +64,17 @@ public class VillagerTrades {
         });
 
 
-
         TradeOfferHelper.registerVillagerOffers(VillagerProfession.CLERIC, 6, factories -> {
             factories.add(new RubySellPotionHoldingItemFactory(Items.GLASS_BOTTLE, 1, Items.POTION, 1, 1, 12, 40));
         });
 
 
-
         TradeOfferHelper.registerVillagerOffers(VillagerProfession.CARTOGRAPHER, 6, factories -> {
-            factories.add(new RubySellMapFactory(3, StructureFeature.BURIED_TREASURE, MapIcon.Type.RED_X, 6, 45));
-            factories.add(new RubySellMapFactory(3, StructureFeature.DESERT_PYRAMID, MapIcon.Type.TARGET_POINT, 6, 45));
-            factories.add(new RubySellMapFactory(3, StructureFeature.JUNGLE_PYRAMID, MapIcon.Type.TARGET_POINT, 6, 45));
-        });
+            factories.add(new RubySellMapFactory(3, MapIcon.Type.RED_X, 6, 45));
+            factories.add(new RubySellMapFactoryNether(3, MapIcon.Type.RED_X, 6, 45));
 
+
+        });
 
 
         TradeOfferHelper.registerVillagerOffers(VillagerProfession.BUTCHER, 6, factories -> {
@@ -97,13 +82,9 @@ public class VillagerTrades {
         });
 
 
-
-
-
         TradeOfferHelper.registerVillagerOffers(VillagerProfession.FLETCHER, 6, factories -> {
             factories.add(new RubySellPotionHoldingItemFactory(Items.ARROW, 15, Items.TIPPED_ARROW, 15, 1, 6, 40));
         });
-
 
 
         TradeOfferHelper.registerVillagerOffers(VillagerProfession.TOOLSMITH, 6, factories -> {
@@ -112,7 +93,6 @@ public class VillagerTrades {
             factories.add(new RubySellEnchantedToolFactory(Items.NETHERITE_AXE, 20, 4, 45));
             factories.add(new RubySellEnchantedToolFactory(Items.NETHERITE_PICKAXE, 20, 4, 45));
         });
-
 
 
         TradeOfferHelper.registerVillagerOffers(VillagerProfession.WEAPONSMITH, 6, factories -> {
@@ -172,6 +152,7 @@ public class VillagerTrades {
             return new TradeOffer(new ItemStack(Moditems.RUBY, j), new ItemStack(Items.BOOK), itemStack, 12, this.experience, 0.2F);
         }
     }
+
     static class RubySellPotionHoldingItemFactory implements TradeOffers.Factory {
         private final ItemStack sell;
         private final int sellCount;
@@ -203,16 +184,17 @@ public class VillagerTrades {
             return new TradeOffer(itemStack, new ItemStack(this.secondBuy, this.secondCount), itemStack2, this.maxUses, this.experience, this.priceMultiplier);
         }
     }
+
     static class RubySellMapFactory implements TradeOffers.Factory {
         private final int price;
-        private final StructureFeature<?> structure;
+        private StructureFeature<?> structure;
         private final MapIcon.Type iconType;
         private final int maxUses;
         private final int experience;
 
-        public RubySellMapFactory(int price, StructureFeature<?> feature, MapIcon.Type iconType, int maxUses, int experience) {
+        public RubySellMapFactory(int price, MapIcon.Type iconType, int maxUses, int experience) {
             this.price = price;
-            this.structure = feature;
+            this.structure = StructureFeature.VILLAGE;
             this.iconType = iconType;
             this.maxUses = maxUses;
             this.experience = experience;
@@ -220,6 +202,20 @@ public class VillagerTrades {
 
         @Nullable
         public TradeOffer create(Entity entity, Random random) {
+            int mapTypes = 5;
+            int X = random.nextInt(mapTypes);
+           // System.out.println(X);
+            if (X == 1) {
+                this.structure = StructureFeature.DESERT_PYRAMID;
+            } else if (X == 2) {
+                this.structure = StructureFeature.JUNGLE_PYRAMID;
+            } else if (X == 3) {
+                this.structure = StructureFeature.SWAMP_HUT;
+            }
+            else if (X == 4) {
+                this.structure = StructureFeature.PILLAGER_OUTPOST;
+            }
+
             if (!(entity.world instanceof ServerWorld)) {
                 return null;
             } else {
@@ -237,6 +233,7 @@ public class VillagerTrades {
             }
         }
     }
+
     static class RubySellEnchantedToolFactory implements TradeOffers.Factory {
         private final ItemStack tool;
         private final int basePrice;
@@ -264,6 +261,51 @@ public class VillagerTrades {
             return new TradeOffer(itemStack2, itemStack, this.maxUses, this.experience, this.multiplier);
         }
     }
+
+    static class RubySellMapFactoryNether implements TradeOffers.Factory {
+        private final int price;
+        private StructureFeature<?> structure;
+        private final MapIcon.Type iconType;
+        private final int maxUses;
+        private final int experience;
+
+        public RubySellMapFactoryNether(int price, MapIcon.Type iconType, int maxUses, int experience) {
+            this.price = price;
+            this.structure = StructureFeature.BASTION_REMNANT;
+            this.iconType = iconType;
+            this.maxUses = maxUses;
+            this.experience = experience;
+        }
+
+        @Nullable
+        public TradeOffer create(Entity entity, Random random) {
+            int mapTypes = 3;
+            int X = random.nextInt(mapTypes);
+            System.out.println(X);
+            if (X == 1) {
+                this.structure = StructureFeature.BASTION_REMNANT;
+            } else if (X == 2) {
+                this.structure = StructureFeature.FORTRESS;
+
+            }
+            if (!(entity.world instanceof ServerWorld)) {
+                return null;
+            } else {
+                ServerWorld serverWorld = (ServerWorld) entity.world;
+                BlockPos blockPos = serverWorld.locateStructure(this.structure, entity.getBlockPos(), 100, true);
+                if (blockPos != null) {
+                    ItemStack itemStack = FilledMapItem.createMap(serverWorld, blockPos.getX(), blockPos.getZ(), (byte) 2, true, true);
+                    FilledMapItem.fillExplorationMap(serverWorld, itemStack);
+                    MapState.addDecorationsTag(itemStack, blockPos, "+", this.iconType);
+                    itemStack.setCustomName(new TranslatableText("filled_map." + this.structure.getName().toLowerCase(Locale.ROOT)));
+                    return new TradeOffer(new ItemStack(Moditems.RUBY, this.price), new ItemStack(Items.COMPASS), itemStack, this.maxUses, this.experience, 0.2F);
+                } else {
+                    return null;
+                }
+            }
+        }
+    }
 }
+
 
 

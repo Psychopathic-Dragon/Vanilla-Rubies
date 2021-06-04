@@ -11,9 +11,9 @@ import net.minecraft.util.registry.Registry;
 
 public class Modblocks {
 
-    public static final Block RUBY_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().strength(5F, 30.0f).sounds(BlockSoundGroup.METAL));
+    public static final Block RUBY_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().strength(5F, 6.0f).sounds(BlockSoundGroup.METAL));
 
-    public static final Block RUBY_ORE= new OreBlock(FabricBlockSettings.of(Material.STONE).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().strength(3F, 15F).sounds(BlockSoundGroup.STONE));
+    public static final Block RUBY_ORE= new OreBlock(FabricBlockSettings.of(Material.STONE).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().strength(3F, 3.0F).sounds(BlockSoundGroup.STONE));
 
 
     public  static  void  registerBlocks() {

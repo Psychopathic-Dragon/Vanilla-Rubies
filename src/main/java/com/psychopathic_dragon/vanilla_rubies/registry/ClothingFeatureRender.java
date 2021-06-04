@@ -1,13 +1,17 @@
 package com.psychopathic_dragon.vanilla_rubies.registry;
 
-import com.psychopathic_dragon.vanilla_rubies.mixin.VillagerClothingFeatureRendererMixin;
+
+
+import com.psychopathic_dragon.vanilla_rubies.mixin.VillagerClothingFeatureRendererAccessor;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
-
+@Environment(EnvType.CLIENT)
 public class ClothingFeatureRender {
-    private static final Int2ObjectMap<Identifier> clothing = (Int2ObjectMap) Util.make(new Int2ObjectOpenHashMap(), (int2ObjectOpenHashMap) -> {
+    public static final Int2ObjectMap<Identifier> clothing = (Int2ObjectMap) Util.make(new Int2ObjectOpenHashMap(), (int2ObjectOpenHashMap) -> {
         int2ObjectOpenHashMap.put(1, new Identifier("stone"));
         int2ObjectOpenHashMap.put(2, new Identifier("iron"));
         int2ObjectOpenHashMap.put(3, new Identifier("gold"));
@@ -17,8 +21,6 @@ public class ClothingFeatureRender {
     });
     public static void addRuby() {
 
-
-        // Set the new villager trade map
-        VillagerClothingFeatureRendererMixin.setClothingFeature(clothing);
+        VillagerClothingFeatureRendererAccessor.setClothingFeature(clothing);
     }
 }

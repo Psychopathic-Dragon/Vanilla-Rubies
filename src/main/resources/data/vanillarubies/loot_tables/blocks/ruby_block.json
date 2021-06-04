@@ -1,5 +1,4 @@
 {
-  "type": "minecraft:block",
   "pools": [
     {
       "rolls": 1,
@@ -11,6 +10,11 @@
             {
               "function": "minecraft:set_count",
               "count": 1
+            }
+          ],
+          "conditions": [
+            {
+              "condition": "minecraft:survives_explosion"
             }
           ]
         }

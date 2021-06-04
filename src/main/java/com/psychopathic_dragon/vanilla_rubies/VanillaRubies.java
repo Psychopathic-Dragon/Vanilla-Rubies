@@ -1,6 +1,8 @@
 package com.psychopathic_dragon.vanilla_rubies;
 
 import com.psychopathic_dragon.vanilla_rubies.registry.*;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
@@ -27,8 +29,10 @@ public class VanillaRubies implements  ModInitializer {
         WanderingTraderTrades.init();
         Sounds.init();
         VillagerTrades.init();
-        ClothingFeatureRender.addRuby();
         VillagerData2.setExperience();
+        try{
+            ClothingFeatureRender.addRuby();}
+        catch(RuntimeException runtimeException){}
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier("vanillarubies", "ore_ruby_ore_overworld"), ORE_RUBY_ORE_OVERWORLD);
         LootTable.init();
 

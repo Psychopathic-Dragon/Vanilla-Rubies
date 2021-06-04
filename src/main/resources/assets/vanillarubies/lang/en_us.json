@@ -14,5 +14,9 @@
   "vanillarubies.advancements.ruby.title":"work",
   "vanillarubies.advancements.ruby.description": "work",
   "filled_map.jungle_pyramid": "Jungle Temple Map",
-  "filled_map.desert_pyramid": "Desert Temple Map"
+  "filled_map.desert_pyramid": "Desert Temple Map",
+  "filled_map.fortress": "Nether Fortress Map",
+  "filled_map.bastion_remnant": "Bastion Remnant Map",
+  "filled_map.swamp_hut": "Witch Hut Map",
+  "filled_map.pillager_outpost": "Pillager Outpost Map"
 }

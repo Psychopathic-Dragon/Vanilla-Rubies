@@ -5,15 +5,16 @@
   "compatibilityLevel": "JAVA_8",
   "mixins": [ "DefaultBiomeFeaturesMixin",
     "WanderingTraderEntityMixin",
-    "VillagerClothingFeatureRendererMixin",
     "VillagerDataAccessor",
-    "VillagerDataMixin",
-    "MerchantScreenMixin",
-    "BeaconScreenMixin",
+    "VillagerDataMixin"
+
 
 
   ],
   "client": [
+    "VillagerClothingFeatureRendererAccessor",
+    "MerchantScreenMixin",
+    "BeaconScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1
