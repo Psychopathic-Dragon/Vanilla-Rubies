@@ -65,13 +65,13 @@ public class VillagerTrades {
 
 
         TradeOfferHelper.registerVillagerOffers(VillagerProfession.CLERIC, 6, factories -> {
-            factories.add(new RubySellPotionHoldingItemFactory(Items.GLASS_BOTTLE, 1, Items.POTION, 1, 1, 12, 40));
+            factories.add(new RubySellPotionHoldingItemFactory(Items.GLASS_BOTTLE, 1, Items.POTION, 3, 1, 2, 40));
         });
 
 
         TradeOfferHelper.registerVillagerOffers(VillagerProfession.CARTOGRAPHER, 6, factories -> {
-            factories.add(new RubySellMapFactory(3, MapIcon.Type.RED_X, 6, 45));
-            factories.add(new RubySellMapFactoryNether(3, MapIcon.Type.RED_X, 6, 45));
+            factories.add(new RubySellMapFactory(3,  6, 45));
+            factories.add(new RubySellMapFactoryNether(3, 6, 45));
 
 
         });
@@ -188,14 +188,14 @@ public class VillagerTrades {
     static class RubySellMapFactory implements TradeOffers.Factory {
         private final int price;
         private StructureFeature<?> structure;
-        private final MapIcon.Type iconType;
+        private MapIcon.Type iconType;
         private final int maxUses;
         private final int experience;
 
-        public RubySellMapFactory(int price, MapIcon.Type iconType, int maxUses, int experience) {
+        public RubySellMapFactory(int price, int maxUses, int experience) {
             this.price = price;
             this.structure = StructureFeature.VILLAGE;
-            this.iconType = iconType;
+            this.iconType =  MapIcon.Type.BANNER_BROWN;;
             this.maxUses = maxUses;
             this.experience = experience;
         }
@@ -207,13 +207,17 @@ public class VillagerTrades {
            // System.out.println(X);
             if (X == 1) {
                 this.structure = StructureFeature.DESERT_PYRAMID;
+                this.iconType = MapIcon.Type.BANNER_LIGHT_GRAY;
             } else if (X == 2) {
                 this.structure = StructureFeature.JUNGLE_PYRAMID;
+                this.iconType = MapIcon.Type.BANNER_ORANGE;
             } else if (X == 3) {
                 this.structure = StructureFeature.SWAMP_HUT;
+                this.iconType = MapIcon.Type.BANNER_GREEN;
             }
             else if (X == 4) {
                 this.structure = StructureFeature.PILLAGER_OUTPOST;
+                this.iconType = MapIcon.Type.TARGET_X;
             }
 
             if (!(entity.world instanceof ServerWorld)) {
@@ -265,14 +269,14 @@ public class VillagerTrades {
     static class RubySellMapFactoryNether implements TradeOffers.Factory {
         private final int price;
         private StructureFeature<?> structure;
-        private final MapIcon.Type iconType;
+        private  MapIcon.Type iconType;
         private final int maxUses;
         private final int experience;
 
-        public RubySellMapFactoryNether(int price, MapIcon.Type iconType, int maxUses, int experience) {
+        public RubySellMapFactoryNether(int price, int maxUses, int experience) {
             this.price = price;
             this.structure = StructureFeature.BASTION_REMNANT;
-            this.iconType = iconType;
+            this.iconType = MapIcon.Type.RED_X;
             this.maxUses = maxUses;
             this.experience = experience;
         }
@@ -284,8 +288,10 @@ public class VillagerTrades {
             System.out.println(X);
             if (X == 1) {
                 this.structure = StructureFeature.BASTION_REMNANT;
+                this.iconType = MapIcon.Type.BANNER_BROWN;
             } else if (X == 2) {
                 this.structure = StructureFeature.FORTRESS;
+                this.iconType = MapIcon.Type.TARGET_POINT;
 
             }
             if (!(entity.world instanceof ServerWorld)) {

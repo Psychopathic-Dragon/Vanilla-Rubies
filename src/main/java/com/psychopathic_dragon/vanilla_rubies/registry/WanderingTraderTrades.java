@@ -13,7 +13,7 @@ public class WanderingTraderTrades {
                 factories.add((entity, random) -> new TradeOffer(new ItemStack(Moditems.RUBY,2), new ItemStack(Items.SCUTE, 1), 5, 2,.05f));
             factories.add((entity, random) -> new TradeOffer(new ItemStack(Moditems.RUBY,1), new ItemStack(Items.RABBIT_FOOT, 1), 5, 2,.05f));
             factories.add((entity, random) -> new TradeOffer(new ItemStack(Moditems.RUBY,1), new ItemStack(Items.PHANTOM_MEMBRANE, 1), 5, 2,.05f));
-            factories.add((entity, random) -> new TradeOffer(new ItemStack(Moditems.RUBY,7), new ItemStack(Items.HEART_OF_THE_SEA, 1), 1, 2,.05f));
+            factories.add((entity, random) -> new TradeOffer(new ItemStack(Moditems.RUBY,5), new ItemStack(Items.HEART_OF_THE_SEA, 1), 1, 2,.05f));
             factories.add((entity, random) -> new TradeOffer(new ItemStack(Moditems.RUBY,2), new ItemStack(Items.NAUTILUS_SHELL, 1), 8, 2,.05f));
             factories.add((entity, random) -> new TradeOffer(new ItemStack(Moditems.RUBY,1), new ItemStack(Items.HONEYCOMB, 4), 1, 2,.05f));
             factories.add((entity, random) -> new TradeOffer(new ItemStack(Moditems.RUBY,1), new ItemStack(Items.HONEY_BOTTLE, 2), 1, 2,.05f));
@@ -24,6 +24,7 @@ public class WanderingTraderTrades {
             factories.add((entity, random) -> new TradeOffer(new ItemStack(Moditems.RUBY,10), new ItemStack(Items.ZOMBIE_HEAD, 1), 1, 2,.05f));
             factories.add((entity, random) -> new TradeOffer(new ItemStack(Moditems.RUBY,10), new ItemStack(Items.PLAYER_HEAD, 1), 1, 2,.05f));
             factories.add((entity, random) -> new TradeOffer(new ItemStack(Moditems.RUBY,10), new ItemStack(Items.SKELETON_SKULL, 1), 1, 2,.05f));
+            factories.add((entity, random) -> new TradeOffer(new ItemStack(Moditems.RUBY,10), new ItemStack(Items.CREEPER_HEAD, 1), 1, 2,.05f));
             factories.add((entity, random) -> new TradeOffer(new ItemStack(Moditems.RUBY,36), new ItemStack(Items.WITHER_ROSE, 1), 4, 2,.05f));
             factories.add((entity, random) -> new TradeOffer(new ItemStack(Moditems.RUBY,2), new ItemStack(Items.FIREWORK_ROCKET, 8), 8, 2,.05f));
             factories.add((entity, random) -> new TradeOffer(new ItemStack(Moditems.RUBY,25), new ItemStack(Items.TOTEM_OF_UNDYING, 1), 1, 2,.05f));
